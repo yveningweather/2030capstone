@@ -38,15 +38,30 @@ Output directly maps to capstone design:
 
 ## Potential improvements
 
-- Load CSV into SQLite database
-- Implement sample queries from schema
-- Add player/roster extraction
-- Build tournament structure
 
-## Data Source
+
+# Data Source
 
 Real data sourced from: https://api.opendota.com/api/teams
 Additional reference: https://docs.opendota.com/
+
+
+## current working pipeline:
+- extracts real esports data csv dumps from OpenDota API 
+- validates and transforms records 
+- exports normalized teams and matches to csv & json formats with statistics on processing results
+
+## incomplete or simplified:
+- region mapping logic and timestamp standardization could potentially be expanded to handle edge cases and provide additional data source formats for comprehensive coverage
+
+## challenges i encountered:
+- handling malformed api responses & ensuring referential integrity when matching teams across different data sources required careful validation and error handling strategies such as skipping invalid records while maintaining overall pipeline robustness
+
+# next steps:
+- load CSV into SQLite database
+- implement sample queries from schema
+- add player/roster extraction
+- build tournament structure
 
 # AI disclosure
 
