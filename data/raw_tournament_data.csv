@@ -1,0 +1,6 @@
+tournament_id,tournament_name,game_name,game_genre,team_size,start_date,end_date,prize_pool
+1,LEC Spring 2024,League of Legends,MOBA,5,2024-01-15,2024-04-28,10000000
+2,VCT Masters Tokyo,Valorant,Tactical Shooter,5,2024-02-01,2024-02-18,500000
+3,LEC Summer 2024,League of Legends,MOBA,5,2024-06-01,2024-09-01,10000000
+4,The International 2024,Dota 2,MOBA,5,2024-10-01,2024-10-31,40000000
+5,VCT Champions 2024,Valorant,Tactical Shooter,5,2024-08-15,2024-09-29,12000000

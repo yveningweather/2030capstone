@@ -1,0 +1,9 @@
+match_id,tournament_id,team1_id,team2_id,winner_team_id,match_date,map_or_game
+101,1,1001,1002,1001,2024-01-15,Summoners Rift
+102,1,1003,1004,1004,2024-01-16,Summoners Rift
+103,1,1005,1001,1001,2024-01-20,Summoners Rift
+104,1,1002,1004,1004,2024-01-22,Summoners Rift
+105,1,1001,1004,1004,2024-04-28,Summoners Rift
+201,2,1006,1007,1006,2024-02-01,Split
+202,2,1008,1010,1008,2024-02-05,Lotus
+203,2,1006,1008,1006,2024-02-18,Pearl
