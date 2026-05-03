@@ -5,10 +5,9 @@
 Full extract-transform-load pipeline using a raw esports data csv dump from OpenDota API
 
 ## How to Run
-
-`ash
+```
 go run etl_pipeline.go
-`
+```
 
 Output files generated in transformed_data/:
 - teams.csv - 986 teams (normalized)
