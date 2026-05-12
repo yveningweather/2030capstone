@@ -1,23 +1,23 @@
 TeamId,Name,Tag,Region,EstablishedDate
 8255888,BetBoom Team,BetBoom,Unknown,2000-01-01
+9572001,PARIVISION,PV,Unknown,2000-01-01
 7412785,CyberBonch-1,CB,Unknown,2000-01-01
 9467224,Aurora Gaming,Aurora,Unknown,2000-01-01
 8605863,Cloud9,C9,Unknown,2000-01-01
-9572001,PARIVISION,PV,Unknown,2000-01-01
 2163,Team Liquid,Liquid,Unknown,2000-01-01
-8291895,Tundra Esports,Tundra,Unknown,2000-01-01
 9247354,Team Falcons,FLCN,Unknown,2000-01-01
 9255706,Aurora.1xBet,Aurora,Unknown,2000-01-01
 5228654,VGJ Storm,VGJ.Storm,Unknown,2000-01-01
 10108947,SouthAmericaRejects,SAR,Unknown,2000-01-01
 9634742,Chimera Esports,CHMR,Unknown,2000-01-01
-7554697,Nigma Galaxy,NGX,Unknown,2000-01-01
 9823272,Team Yandex,TY,Unknown,2000-01-01
 8169775,Geek Fam,Geek,Unknown,2000-01-01
 8121295,mudgolems,.,Unknown,2000-01-01
+7554697,Nigma Galaxy,NGX,Unknown,2000-01-01
 8260983,TSM,TSM,Unknown,2000-01-01
 3214108,Team NP,NP,Unknown,2000-01-01
 9131584,BB Team,BB,Unknown,2000-01-01
+8291895,Tundra Esports,Tundra,Unknown,2000-01-01
 2519319,(monkey) Business,(monkey),Unknown,2000-01-01
 7819701,VP.Prodigy,VP.P,Unknown,2000-01-01
 9142866,Business Club,bs,Unknown,2000-01-01
@@ -43,19 +43,19 @@ TeamId,Name,Tag,Region,EstablishedDate
 8255756,Evil Geniuses,EG,Unknown,2000-01-01
 6214538,Newbee,Newbee,Unknown,2000-01-01
 8599101,Gaimin Gladiators,GG,Unknown,2000-01-01
+726228,Vici Gaming,VG,Unknown,2000-01-01
 5229127,Winstrike,Winstrike,Unknown,2000-01-01
 4251435,w33ha earthspirit,,Unknown,2000-01-01
 9381131,Uzumaki,uzu,Unknown,2000-01-01
 543897,Mineski,Mineski,Unknown,2000-01-01
-9338413,MOUZ,MOUZ,Unknown,2000-01-01
 9080405,Team Zero,Tz,Unknown,2000-01-01
 6382242,Thunder Predator,ThunderP,Unknown,2000-01-01
+9255039,1w Team,1w,Unknown,2000-01-01
 1910985,TeamMalaysia,MY,Unknown,2000-01-01
 8254400,beastcoast,bc,Unknown,2000-01-01
 9885130,Perú Rejects,PERU,Unknown,2000-01-01
 9187066,Team Tickles,TT,Unknown,2000-01-01
 3922738," Thunder Awaken ///",Thunder,Unknown,2000-01-01
-726228,Vici Gaming,VG,Unknown,2000-01-01
 8204512,Neptune Gaming,NG,Unknown,2000-01-01
 15,LGD Gaming,LGD,Unknown,2000-01-01
 9640842,Team Tidebound,TT,Unknown,2000-01-01
@@ -63,11 +63,11 @@ TeamId,Name,Tag,Region,EstablishedDate
 8261818,Hellbear Smashers,SMASH,Unknown,2000-01-01
 9018710,Holy Grail,HG,Unknown,2000-01-01
 1820360,TEAMERINO TINKERINO,TT,Unknown,2000-01-01
+2576071,Yellow Submarine,YeS,Unknown,2000-01-01
 9381678,Apex Genesis,Apex,Unknown,2000-01-01
 7553952,Chicken Fighters !,ChFight!,Unknown,2000-01-01
 293390,Radical Online X-tremists,RoX.KIS,Unknown,2000-01-01
 7203342,Chaos EC,CHAOS,Unknown,2000-01-01
-9828897,REKONIX,RKX,Unknown,2000-01-01
 1047281,Speed Gaming International,SPG.int,Unknown,2000-01-01
 9248240,TeamWaska,WaSka,Unknown,2000-01-01
 8168562,INK ICE,,Unknown,2000-01-01
@@ -77,10 +77,12 @@ TeamId,Name,Tag,Region,EstablishedDate
 2526472,$5JuNGz$,$5JuNGz$,Unknown,2000-01-01
 8574561,Azure Ray,AR,Unknown,2000-01-01
 5027210,VGJ Thunder,VGJ.T,Unknown,2000-01-01
+10020555,PlayTime,PlayTime,Unknown,2000-01-01
 3326875,Faceless,fL,Unknown,2000-01-01
 8668460,Blacklist Rivalry ,BLR,Unknown,2000-01-01
 8962585,Star Foxes ,SF,Unknown,2000-01-01
 9594647,PuckChamp,PC,Unknown,2000-01-01
+55,_PowerRangers,PR,Unknown,2000-01-01
 9824702,PARIVISION,PARI,Unknown,2000-01-01
 7555613,OG.Seed,OG.S,Unknown,2000-01-01
 1883502,Virtus.pro,VP,Unknown,2000-01-01
@@ -88,37 +90,36 @@ TeamId,Name,Tag,Region,EstablishedDate
 8119006,Among Us,AUS,Unknown,2000-01-01
 7405754,Positive Guys,PG,Unknown,2000-01-01
 8944440,StoRm,StoRm,Unknown,2000-01-01
-9255039,1w Team,1w,Unknown,2000-01-01
 7424172,T1,T1,Unknown,2000-01-01
 3326126,Team VG.J,VG.J,Unknown,2000-01-01
 9482900,Рязань-ВДВ,RZN,Unknown,2000-01-01
+10081680,GLYPH,GLYPH,Unknown,2000-01-01
 6209166,Team Aster,Aster,Unknown,2000-01-01
 2108395,TNC Predator,TNC,Unknown,2000-01-01
 3722973,Team Onyx,Onyx,Unknown,2000-01-01
 9283988,Invaders,INV,Unknown,2000-01-01
 8143502,4am.小象,,Unknown,2000-01-01
-2576071,Yellow Submarine,YeS,Unknown,2000-01-01
 416900,Orange.Neolution Esports,Orange,Unknown,2000-01-01
 6382740,Royal,Royal,Unknown,2000-01-01
 9729720,Virtus.pro,VP,Unknown,2000-01-01
 9895392,Virtus.pro,VP,Unknown,2000-01-01
 9814008,eSpoiled,eSpoiled,Unknown,2000-01-01
+9054352,Fortnite,alt,Unknown,2000-01-01
 9389381,Team  KEV,KEV,Unknown,2000-01-01
 7806386,Quincy Crew,,Unknown,2000-01-01
 2635099,CDEC.Y,,Unknown,2000-01-01
 8062847,Galaxy Racer Esports,GXR,Unknown,2000-01-01
 3586078,Geek Fam,GeekFam,Unknown,2000-01-01
-9303383,L1GA TEAM,L1,Unknown,2000-01-01
 2621843,Team. Spirit,TSpirit,Unknown,2000-01-01
 67,paiN Gaming,paiN,Unknown,2000-01-01
 9466943,Team Tea,Tea,Unknown,2000-01-01
 8261234,CREEPWAVE,CREEP,Unknown,2000-01-01
 9593895,Gaozu,,Unknown,2000-01-01
+8203841,DestroyItems,DI,Unknown,2000-01-01
 7118032,Winstrike Team,Winstrike,Unknown,2000-01-01
 41,4 Friends + Chrillee,4FC,Unknown,2000-01-01
 9255238,ESTAR_BACKS,StarBackus,Unknown,2000-01-01
 8728920,nouns,nouns,Unknown,2000-01-01
-55,_PowerRangers,PR,Unknown,2000-01-01
 6685591,ViKin.gg,Vikin.gg,Unknown,2000-01-01
 8975678,Team Sexy,Sexy,Unknown,2000-01-01
 4288603,Rock.Young,Rock.Y,Unknown,2000-01-01
@@ -129,6 +130,7 @@ TeamId,Name,Tag,Region,EstablishedDate
 4,EHOME,EHOME,Unknown,2000-01-01
 7681441,business associates,business,Unknown,2000-01-01
 1025734,LUCCINI GAM1NG,Luccini,Unknown,2000-01-01
+9338413,MOUZ,MOUZ,Unknown,2000-01-01
 1803996,NAM VEZET-MI IGRAEM,NVMI,Unknown,2000-01-01
 1556884,AftershockGaming Int.,aShock,Unknown,2000-01-01
 9201870,ROR,ROR,Unknown,2000-01-01
@@ -137,9 +139,9 @@ TeamId,Name,Tag,Region,EstablishedDate
 8482814,Ragdoll,Ragdoll,Unknown,2000-01-01
 8750317,Team Sphinx,TSX,Unknown,2000-01-01
 39,Shopify Rebellion,SR,Unknown,2000-01-01
-9691969,Team Nemesis,NMSS,Unknown,2000-01-01
 8145157,Yellow Submarine,YeS,Unknown,2000-01-01
 2780729,G.star,GS,Unknown,2000-01-01
+9828897,REKONIX,RKX,Unknown,2000-01-01
 8597976,Talon,TALON,Unknown,2000-01-01
 2586976,OG,OG,Unknown,2000-01-01
 3332295,Friends,Friends,Unknown,2000-01-01
@@ -151,14 +153,12 @@ TeamId,Name,Tag,Region,EstablishedDate
 8282268,Chadou Fint,SF,Unknown,2000-01-01
 8514342,Infamous Uesports,Inf.U,Unknown,2000-01-01
 1283482,Scythe.SG-,SCYTHE,Unknown,2000-01-01
-9054352,Fortnite,alt,Unknown,2000-01-01
 38,FnaticRaidCall,Fntc,Unknown,2000-01-01
 1836806,the wings gaming,Wings,Unknown,2000-01-01
 6904594,TEAM TEAM,tt,Unknown,2000-01-01
 1277104,Nvidia.ArrowGaming.AVF,Arrow,Unknown,2000-01-01
 6298307,The Pango,ThePango,Unknown,2000-01-01
 6951036,Cignal Ultra Warriors,CUW,Unknown,2000-01-01
-8203841,DestroyItems,DI,Unknown,2000-01-01
 9744330,Somos Nós a Justiça,SNJ,Unknown,2000-01-01
 2714312,Aggressive 5,A5,Unknown,2000-01-01
 8086218,TEAM BRASIL,BR,Unknown,2000-01-01
@@ -189,7 +189,6 @@ TeamId,Name,Tag,Region,EstablishedDate
 9448501,TEAM TURTLE,,Unknown,2000-01-01
 1375614,Newbee,Newbee,Unknown,2000-01-01
 1531850,North American Rejects,NAR,Unknown,2000-01-01
-10081680,GLYPH,GLYPH,Unknown,2000-01-01
 1059824,Dream time.,DT,Unknown,2000-01-01
 9692104,Nethercore,,Unknown,2000-01-01
 8083854,cuteanimegirls,cute,Unknown,2000-01-01
@@ -199,7 +198,6 @@ TeamId,Name,Tag,Region,EstablishedDate
 1866993,T.O.T,SPG.NT,Unknown,2000-01-01
 134900,iCCup Team,iCCup,Unknown,2000-01-01
 8747056,Virtus.pro2,VP2,Unknown,2000-01-01
-9928636,Team Lynx,LYNX,Unknown,2000-01-01
 20,Newbee.mgb,,Unknown,2000-01-01
 8750069,Gorilla,,Unknown,2000-01-01
 1370482,Doggy Team,DOG,Unknown,2000-01-01
@@ -208,7 +206,6 @@ TeamId,Name,Tag,Region,EstablishedDate
 8835624,Team Sangre,T.Sangre,Unknown,2000-01-01
 8075993,For The Dream,,Unknown,2000-01-01
 5725202,Wind and Rain,WaR,Unknown,2000-01-01
-9600141,Zero Tenacity,Z10,Unknown,2000-01-01
 8680612,noMERCY,noMERCY,Unknown,2000-01-01
 1194815,Dwayne 'The John' Rockson,THE ROCK,Unknown,2000-01-01
 2642171,Team AD FINEM,AF,Unknown,2000-01-01
@@ -224,6 +221,7 @@ TeamId,Name,Tag,Region,EstablishedDate
 9744229,Team Den,TD,Unknown,2000-01-01
 2085365,-Ninjas-in-Pyjamas-,NiP,Unknown,2000-01-01
 2780911,Eagles GIGABYTE,Eagles,Unknown,2000-01-01
+9600141,Zero Tenacity,Z10,Unknown,2000-01-01
 9646485,Jigglin,Jigglin,Unknown,2000-01-01
 9545759,Waska,Waska,Unknown,2000-01-01
 3715574,SG e-sports team,SG,Unknown,2000-01-01
@@ -235,7 +233,6 @@ TeamId,Name,Tag,Region,EstablishedDate
 3722485,B)ears,B),Unknown,2000-01-01
 8112124,Brame,BR,Unknown,2000-01-01
 7121264,PANDA GAMING,PG,Unknown,2000-01-01
-5017210,Team Resilience,Resilience,Unknown,2000-01-01
 626763,AllianceGG,[A],Unknown,2000-01-01
 2552118,FTD club a,FTD.a,Unknown,2000-01-01
 3317512,DUOBAO Young,DUOBAO.Y,Unknown,2000-01-01
@@ -255,8 +252,6 @@ TeamId,Name,Tag,Region,EstablishedDate
 8621525,barsa,1525,Unknown,2000-01-01
 9450071,Fusion Esports,FSN,Unknown,2000-01-01
 2789717,Polarity Dota 2,Polarity,Unknown,2000-01-01
-7777322,Oshi hi teo Gaming,OG,Unknown,2000-01-01
-9593609,Nethercore,NC,Unknown,2000-01-01
 9664724,ITB.Shuffle,ITB.S,Unknown,2000-01-01
 1061269,Vivo Keyd Stars,VKS,Unknown,2000-01-01
 689412,"Team ""SEX""",sex,Unknown,2000-01-01
@@ -276,6 +271,7 @@ TeamId,Name,Tag,Region,EstablishedDate
 6929895,Pejuang Dota Badung,PDB,Unknown,2000-01-01
 9470838,Infinity,,Unknown,2000-01-01
 8261554,Army Geniuses Mansion ,AGM,Unknown,2000-01-01
+9303383,L1GA TEAM,L1,Unknown,2000-01-01
 5067988,ROG TiTans,ROG,Unknown,2000-01-01
 1286339,Arizona Iced Out Boys,sad,Unknown,2000-01-01
 9366499,KEV,,Unknown,2000-01-01
@@ -305,20 +301,23 @@ TeamId,Name,Tag,Region,EstablishedDate
 9545744,Team Kukuys,Kukuys,Unknown,2000-01-01
 7937681,DestroyItems,DI,Unknown,2000-01-01
 8230491,TEAM DOG,,Unknown,2000-01-01
+10135834,TEAM GRIND,GrindBack,Unknown,2000-01-01
+10136133,Two Move,TM,Unknown,2000-01-01
 3547682,Team VGJ,VGJ,Unknown,2000-01-01
 8428953,Sinister 5,Sin5,Unknown,2000-01-01
 7404529,Reality Rift,RR ,Unknown,2000-01-01
 7355202,0-900,Ceros&99,Unknown,2000-01-01
 5407259,TNC Tigers,Tigers,Unknown,2000-01-01
+5017210,Team Resilience,Resilience,Unknown,2000-01-01
 6465690,Team Fantech,,Unknown,2000-01-01
 10108713,Breeki Cheeki,,Unknown,2000-01-01
 2512249,123,123,Unknown,2000-01-01
-10019843,Inner Circle x Insanity,ICxI,Unknown,2000-01-01
 6796511,Saints ID,Saints,Unknown,2000-01-01
 8697328,Please dont gank my carry,gnk,Unknown,2000-01-01
 1848465,LaiGaming,LaiG,Unknown,2000-01-01
 1256674,XPC International,XPC.Int,Unknown,2000-01-01
 7441136,beastcoast,bc,Unknown,2000-01-01
+10019843,Inner Circle x Insanity,ICxI,Unknown,2000-01-01
 9477537,52turbo,52turbo,Unknown,2000-01-01
 7359917,Lowkey,LK,Unknown,2000-01-01
 4426165,xxX,Signify,Unknown,2000-01-01
@@ -330,9 +329,12 @@ TeamId,Name,Tag,Region,EstablishedDate
 7556672,TEMPO,TMP,Unknown,2000-01-01
 5051649,Immortals,IMT,Unknown,2000-01-01
 6306453,WarriorsGaming.Unity,WG.Unity,Unknown,2000-01-01
+9928636,Team Lynx,LYNX,Unknown,2000-01-01
 3785359,BOOM ID,BOOM,Unknown,2000-01-01
+9593609,Nethercore,NC,Unknown,2000-01-01
 9142627,Business Club,BC,Unknown,2000-01-01
 7586931,Avengers,A,Unknown,2000-01-01
+7777322,Oshi hi teo Gaming,OG,Unknown,2000-01-01
 3259983,Emit Lortnoc Boss,ETLC Boss,Unknown,2000-01-01
 9148266,AcatSuki,CAT,Unknown,2000-01-01
 8563718,WildDeer,WD,Unknown,2000-01-01
@@ -369,7 +371,6 @@ TeamId,Name,Tag,Region,EstablishedDate
 6214973,Ninjas in Pyjamas,NiP,Unknown,2000-01-01
 9216247,ASAKURA,ASAKURA,Unknown,2000-01-01
 7101255,Revenge Gaming,,Unknown,2000-01-01
-5014799,Nemiga Gaming,Nemiga,Unknown,2000-01-01
 8970358,mind takers,MT,Unknown,2000-01-01
 9600942,WIN,GT,Unknown,2000-01-01
 1642908,Natus Vincere US,Na`Vi US,Unknown,2000-01-01
@@ -383,14 +384,12 @@ TeamId,Name,Tag,Region,EstablishedDate
 9957138,Stariy_Bog,Stariy_Bog,Unknown,2000-01-01
 10095351,BloodyRose,,Unknown,2000-01-01
 9256222,Wawitas sagazes,Wawitas,Unknown,2000-01-01
-9895247,Rune Eaters,RE,Unknown,2000-01-01
 8193681,Team Thailand,THA,Unknown,2000-01-01
 2224197,G Guard Esports,G Guard,Unknown,2000-01-01
 1366458,R a v e,Rave,Unknown,2000-01-01
 8375459,rush b!,,Unknown,2000-01-01
 9368468,Twisted Minds,Twis,Unknown,2000-01-01
 8856125,Ancient Tribe2,ATT,Unknown,2000-01-01
-10020555,PlayTime,PlayTime,Unknown,2000-01-01
 9224799,NoMuerta,NM,Unknown,2000-01-01
 8062738,egoboys,ego,Unknown,2000-01-01
 8375259,Infinity,Infinity,Unknown,2000-01-01
@@ -410,7 +409,6 @@ TeamId,Name,Tag,Region,EstablishedDate
 3851150,NoLogic Gaming,NLG,Unknown,2000-01-01
 8893633,STUDIO21,STUDIO21,Unknown,2000-01-01
 2,Zenith,Zenith,Unknown,2000-01-01
-10040534,Greyhound Team,GHT,Unknown,2000-01-01
 9829468,100MMR,100MMR,Unknown,2000-01-01
 5084724,Newbee.M,Newbee.M,Unknown,2000-01-01
 2349091,TODOPORELPOD,TXP,Unknown,2000-01-01
@@ -421,10 +419,12 @@ TeamId,Name,Tag,Region,EstablishedDate
 9818882,Стак который ебет,SKE,Unknown,2000-01-01
 53,Potm Bottom,PB,Unknown,2000-01-01
 7681903,IO Dota2,IO,Unknown,2000-01-01
+10040534,Greyhound Team,GHT,Unknown,2000-01-01
 9885888,KUKUYS,KKYS,Unknown,2000-01-01
 8581305,Lava BestPc,Lava,Unknown,2000-01-01
 7641673,Aggressive Mode.,A-Mode,Unknown,2000-01-01
 3018001,"     ",,Unknown,2000-01-01
+9906210,Teiko,,Unknown,2000-01-01
 7098928,Adroit,Adroit,Unknown,2000-01-01
 5270154,Team Russia,,Unknown,2000-01-01
 9351740,Yakult Brothers,YB,Unknown,2000-01-01
@@ -462,8 +462,10 @@ TeamId,Name,Tag,Region,EstablishedDate
 7119284,Power of MYSG+AU,MYSGAU,Unknown,2000-01-01
 6711290,Team Singularity,SNG,Unknown,2000-01-01
 7483893,Fighting PandaS,FP,Unknown,2000-01-01
+9729268,Teiko,Teiko,Unknown,2000-01-01
 8252662,BINUS University,BINUS,Unknown,2000-01-01
 5209335,Orginality,ORg,Unknown,2000-01-01
+5014799,Nemiga Gaming,Nemiga,Unknown,2000-01-01
 9609099,Rakuzan,Rakuzan,Unknown,2000-01-01
 6822187,SS DARVIN LOPERS,DL,Unknown,2000-01-01
 7300685,Team Drinking,TD,Unknown,2000-01-01
@@ -474,7 +476,6 @@ TeamId,Name,Tag,Region,EstablishedDate
 9256136,Bammysoy,BS,Unknown,2000-01-01
 7543171,Manaburn,Manaburn,Unknown,2000-01-01
 8375466,Motivate. Viper Gaming,MVG,Unknown,2000-01-01
-8850016,FLYING FORTUNE,Ff,Unknown,2000-01-01
 9455993,повер ренджерс,,Unknown,2000-01-01
 9079901,The last dark,,Unknown,2000-01-01
 9229377,DemiGods,DG,Unknown,2000-01-01
@@ -488,7 +489,7 @@ TeamId,Name,Tag,Region,EstablishedDate
 3260216,Team HighGround,HG,Unknown,2000-01-01
 484909,Hyper Glory Team,HGT,Unknown,2000-01-01
 7443956,Black Knight,,Unknown,2000-01-01
-9098294,Carstensz Esports,Carstensz,Unknown,2000-01-01
+9729767,BloodyRose,BR,Unknown,2000-01-01
 9216658,Lion Lover,LL,Unknown,2000-01-01
 8496219,Khan esports,Khan,Unknown,2000-01-01
 9554242,Play for Fun,P4F,Unknown,2000-01-01
@@ -525,7 +526,6 @@ TeamId,Name,Tag,Region,EstablishedDate
 8556648,Osh-Tekk Warriors,OTW,Unknown,2000-01-01
 2136210,Leetss Do It,asd,Unknown,2000-01-01
 8606828,Wildcard,WC,Unknown,2000-01-01
-9729767,BloodyRose,BR,Unknown,2000-01-01
 8318683,IVY,IVY,Unknown,2000-01-01
 6658560,Guardian Gaming,GG,Unknown,2000-01-01
 9277978,内蒙古的星空,DLG,Unknown,2000-01-01
@@ -552,6 +552,7 @@ TeamId,Name,Tag,Region,EstablishedDate
 9103873,Infamous Astra,infamous.A,Unknown,2000-01-01
 8856078,Balrogs Academy™,Balrogs.A,Unknown,2000-01-01
 8384158,Into The Breach,ITB,Unknown,2000-01-01
+8850016,FLYING FORTUNE,Ff,Unknown,2000-01-01
 7528264,bmstu,bmstu,Unknown,2000-01-01
 7801839,Paladin,,Unknown,2000-01-01
 805172,Avant Garde Gaming,Avant,Unknown,2000-01-01
@@ -570,7 +571,6 @@ TeamId,Name,Tag,Region,EstablishedDate
 8756744,Crayon Shin-chan,CSC,Unknown,2000-01-01
 9467024,Dominion,,Unknown,2000-01-01
 2019384,[Flip.Sid3 Tactics],[F.3],Unknown,2000-01-01
-9878408,Elite Eclipse,,Unknown,2000-01-01
 6685947,AQuaMan,AQM,Unknown,2000-01-01
 6409189,Team Empire Hope,EmpireH,Unknown,2000-01-01
 8077147,Omegalil,Omega,Unknown,2000-01-01
@@ -602,6 +602,7 @@ TeamId,Name,Tag,Region,EstablishedDate
 8124688,Kylin Esports Club,Kylin,Unknown,2000-01-01
 7894580,miaww^^,miaww^^,Unknown,2000-01-01
 9834249,Ji est'',.Jst,Unknown,2000-01-01
+9691969,Team Nemesis,NMSS,Unknown,2000-01-01
 5207190,Admiral Dota,Admiral,Unknown,2000-01-01
 9797234,Team Sin Compromiso,[TSC],Unknown,2000-01-01
 9011262,STARFAll,STARFAll |,Unknown,2000-01-01
@@ -618,12 +619,12 @@ TeamId,Name,Tag,Region,EstablishedDate
 8118197,Infamous Gaming,INF,Unknown,2000-01-01
 8726159,Taw Gang,TG,Unknown,2000-01-01
 7542075,escape,aom,Unknown,2000-01-01
-8415816," Team HaliFFat",DaGG,Unknown,2000-01-01
 9849814,山东好男人,,Unknown,2000-01-01
 9395449,Outcast,OC,Unknown,2000-01-01
 9736257,Roselia,,Unknown,2000-01-01
 4010559,Team Quetzal,QzL,Unknown,2000-01-01
 7284811,No Fucking Name,NFN,Unknown,2000-01-01
+8415816," Team HaliFFat",DaGG,Unknown,2000-01-01
 367492,Revenge-,RvG,Unknown,2000-01-01
 3968479,PODKONÍ A KRÁVA,PaK,Unknown,2000-01-01
 8726547,Deboosters,,Unknown,2000-01-01
@@ -657,6 +658,7 @@ TeamId,Name,Tag,Region,EstablishedDate
 10129270,минибарса,,Unknown,2000-01-01
 8360860,HF,HF,Unknown,2000-01-01
 1115421,BBUBU+4,Pensiunn,Unknown,2000-01-01
+9724428,Shinigami Gaming,,Unknown,2000-01-01
 5076975,New Beginning,NB,Unknown,2000-01-01
 8574375,ThunderCoast,,Unknown,2000-01-01
 992217,Gofigure,GF,Unknown,2000-01-01
@@ -666,6 +668,7 @@ TeamId,Name,Tag,Region,EstablishedDate
 9492695,Ghost Sheep,,Unknown,2000-01-01
 1064548,Celestial eSports,ceL',Unknown,2000-01-01
 9538207,Myth Avenue Gaming,MAG,Unknown,2000-01-01
+7299465,MODUS,MODUS,Unknown,2000-01-01
 7407260,Team Saiyan,TSaiyin,Unknown,2000-01-01
 4259604,Veteran,Veteran,Unknown,2000-01-01
 2355689,Malaya Dubna,,Unknown,2000-01-01
@@ -690,13 +693,14 @@ TeamId,Name,Tag,Region,EstablishedDate
 6435075,NoLifer5,NL5,Unknown,2000-01-01
 1521260,ColourfulRainbows,colR,Unknown,2000-01-01
 8936418,Philippines,PHL,Unknown,2000-01-01
+10136357,Nigma Galaxy ,NGX,Unknown,2000-01-01
 7655250,Arassa Deniz,AD,Unknown,2000-01-01
 8820860,Overlord,不死者,Unknown,2000-01-01
 2701329,Team Freedom Dota 2,Freedom,Unknown,2000-01-01
 9651814,Yellow Submarine,,Unknown,2000-01-01
 4287101,TEAM EVER,EVER,Unknown,2000-01-01
-8969481,Team Sexy,Sexy,Unknown,2000-01-01
 9261979,YG,YG,Unknown,2000-01-01
+8969481,Team Sexy,Sexy,Unknown,2000-01-01
 9887333,Dynamo,DYN,Unknown,2000-01-01
 6187452,Team.PhoeniX,PhoeniX,Unknown,2000-01-01
 6767698,You Rock,YouRock,Unknown,2000-01-01
@@ -740,6 +744,7 @@ TeamId,Name,Tag,Region,EstablishedDate
 6763958,Team Odd,Odd,Unknown,2000-01-01
 6711721,Old but Gold,gOLD,Unknown,2000-01-01
 2191966,Super Trash Brothers,trashBRO,Unknown,2000-01-01
+9895818,Eye Gaming,,Unknown,2000-01-01
 5528506,slojniy memas,slojniymem,Unknown,2000-01-01
 9964743,DAVDDCLUB,DD+,Unknown,2000-01-01
 7913710,KVP,KVP,Unknown,2000-01-01
@@ -798,6 +803,7 @@ TeamId,Name,Tag,Region,EstablishedDate
 8413838,TEAM D,TD,Unknown,2000-01-01
 7,DK,DK,Unknown,2000-01-01
 8070280,Into The Breach,ITB,Unknown,2000-01-01
+10108233,ShIShUlI,ShL,Unknown,2000-01-01
 460316,UrsaStroitHramm,USH,Unknown,2000-01-01
 9973579,chandogs,,Unknown,2000-01-01
 5326172,Vzpoura Goliardu ,VZG,Unknown,2000-01-01
@@ -818,7 +824,6 @@ TeamId,Name,Tag,Region,EstablishedDate
 7358634,S A D B O Y S . A U,SAD,Unknown,2000-01-01
 1730778,Avernus.ir,AvernuS,Unknown,2000-01-01
 8701944,Team Domino,TD,Unknown,2000-01-01
-9828921,Air Defence,,Unknown,2000-01-01
 7237001,Tisumejik Esport,,Unknown,2000-01-01
 8811024,Brodie,,Unknown,2000-01-01
 3265632,PG.Barracx,BrX,Unknown,2000-01-01
@@ -829,6 +834,7 @@ TeamId,Name,Tag,Region,EstablishedDate
 8309784,CyberLife eSports,Clife,Unknown,2000-01-01
 94252,The GD B-Team,[GD],Unknown,2000-01-01
 9042172,DerzhaWIN,DerzhaWIN,Unknown,2000-01-01
+9895247,Rune Eaters,RE,Unknown,2000-01-01
 5012612,WipeouT,w/o,Unknown,2000-01-01
 8944337,Old G,OLG,Unknown,2000-01-01
 1513643,Diego y sus Amigos,DysA-,Unknown,2000-01-01
@@ -844,6 +850,7 @@ TeamId,Name,Tag,Region,EstablishedDate
 8556552,01 Esports,01,Unknown,2000-01-01
 6324964,BITCHBUILD,bb,Unknown,2000-01-01
 5638182,Madefake Esports,Mdfk,Unknown,2000-01-01
+9814269,Riftwalkers,RW.,Unknown,2000-01-01
 8359797,Level UP,lvlUP,Unknown,2000-01-01
 5031582,2Be.Dota2,-2Be-,Unknown,2000-01-01
 3259967,you were my everything.,,Unknown,2000-01-01
@@ -879,6 +886,7 @@ TeamId,Name,Tag,Region,EstablishedDate
 7451388,LieYing Team,,Unknown,2000-01-01
 4149284,Place Holder,PH,Unknown,2000-01-01
 9677613,Studenite,STUD,Unknown,2000-01-01
+2443375,Foxy gaming,Foxy,Unknown,2000-01-01
 10033620,StrongBoys,SB,Unknown,2000-01-01
 5029074,Keen Gaming,KG,Unknown,2000-01-01
 8300351,zxc and pause,zxc,Unknown,2000-01-01
@@ -887,7 +895,6 @@ TeamId,Name,Tag,Region,EstablishedDate
 2052902,Extraordinary-Team,,Unknown,2000-01-01
 8118868,We must move forward,WMMF,Unknown,2000-01-01
 5260723,Fatal Error,FtE,Unknown,2000-01-01
-9724428,Shinigami Gaming,,Unknown,2000-01-01
 8359478,Royale 5,R5,Unknown,2000-01-01
 5208684,Sporkface Killaz,,Unknown,2000-01-01
 9487554,Dark Reef,DarkReef.,Unknown,2000-01-01
@@ -902,7 +909,6 @@ TeamId,Name,Tag,Region,EstablishedDate
 9181465,Wanderlust,Twt,Unknown,2000-01-01
 2447566,Tamo ai na strada,TANS,Unknown,2000-01-01
 2337461,Microsoft Corporation,,Unknown,2000-01-01
-7299465,MODUS,MODUS,Unknown,2000-01-01
 1287653,Assail,^,Unknown,2000-01-01
 8793513,Rakuzan,,Unknown,2000-01-01
 3927252,Team Buriza,TB,Unknown,2000-01-01
@@ -912,7 +918,6 @@ TeamId,Name,Tag,Region,EstablishedDate
 1748111,Duza Gaming.,Duza,Unknown,2000-01-01
 3931472,New Beginning,NB,Unknown,2000-01-01
 9966313,миумиу|>.<,миумиу|>.<,Unknown,2000-01-01
-9906210,Teiko,,Unknown,2000-01-01
 9426457,GOTF eSports,GF,Unknown,2000-01-01
 9671463,Apple City Gang,AppleGG,Unknown,2000-01-01
 784775,Cede.Nullis,TCN,Unknown,2000-01-01
@@ -980,8 +985,3 @@ TeamId,Name,Tag,Region,EstablishedDate
 9223943,Rabbits of Revenge,Ror,Unknown,2000-01-01
 7856045,Dexterity,Dexterity,Unknown,2000-01-01
 2224698,O1d Boys,Old boys,Unknown,2000-01-01
-9132053,ua rejects,ua,Unknown,2000-01-01
-5124585,Alter Ego,AlterEgo,Unknown,2000-01-01
-5165603,EPHEMERAL TEAM,PHMRL,Unknown,2000-01-01
-10075251,Bayou Bloodseekers,BB,Unknown,2000-01-01
-9462373,HardBass Team,HBT,Unknown,2000-01-01

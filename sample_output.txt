@@ -1,0 +1,65 @@
+======================================================================
+TOURNAMENT SYSTEM - SAMPLE QUERY RESULTS
+======================================================================
+
+QUERY 1: All Games in System
+----------------------------------------------------------------------
+  GameId: 1, Name: Dota 2, Genre: MOBA, Team Size: 5
+
+QUERY 2: Teams by Region (Aggregation)
+----------------------------------------------------------------------
+  Region: CIS, Count: 2 teams
+  Region: CN, Count: 1 teams
+  Region: Unknown, Count: 987 teams
+
+QUERY 3: Match Results with Team Names (JOIN)
+----------------------------------------------------------------------
+  Match 7893247500: Team Spirit vs PSG.LGD → Winner: PSG.LGD (2024-01-14) [Dota 2]
+  Match 7893247501: PSG.LGD vs Secret → Winner: PSG.LGD (2024-01-15) [Dota 2]
+  Match 7893247502: Secret vs Virtus.Pro → Winner: Secret (2024-01-16) [Dota 2]
+  Match 7893247503: Virtus.Pro vs OG → Winner: OG (2024-01-17) [Dota 2]
+  Match 7893247504: Cloud9 vs Team Liquid → Winner: Cloud9 (2024-01-18) [Dota 2]
+  Match 7893247505: Team Liquid vs Team Falcons → Winner: Team Liquid (2024-01-19) [Dota 2]
+  Match 7893247506: Team Falcons vs Aurora.1xBet → Winner: Aurora.1xBet (2024-01-20) [Dota 2]
+  Match 7893247507: Aurora.1xBet vs VGJ Storm → Winner: Aurora.1xBet (2024-01-21) [Dota 2]
+  Match 7893247508: VGJ Storm vs SouthAmericaRejects → Winner: VGJ Storm (2024-01-22) [Dota 2]
+  Match 7893247511: Chimera Esports vs Team Yandex → Winner: Chimera Esports (2024-01-25) [Dota 2]
+  Match 7893247512: Team Yandex vs Geek Fam → Winner: Geek Fam (2024-01-26) [Dota 2]
+  Match 7893247513: Geek Fam vs mudgolems → Winner: Geek Fam (2024-01-27) [Dota 2]
+  Match 7893247514: mudgolems vs Nigma Galaxy → Winner: mudgolems (2024-01-28) [Dota 2]
+  Match 7893247515: Nigma Galaxy vs TSM → Winner: TSM (2024-01-29) [Dota 2]
+  Match 7893247516: TSM vs Team NP → Winner: TSM (2024-01-30) [Dota 2]
+  Match 7893247517: Team NP vs BB Team → Winner: Team NP (2024-01-31) [Dota 2]
+  Match 7893247518: BB Team vs Tundra Esports → Winner: Tundra Esports (2024-02-01) [Dota 2]
+  Match 7893247519: Tundra Esports vs (monkey) Business → Winner: Tundra Esports (2024-02-02) [Dota 2]
+  Match 7893247520: (monkey) Business vs VP.Prodigy → Winner: (monkey) Business (2024-02-03) [Dota 2]
+  Match 7893247521: VP.Prodigy vs Business Club → Winner: Business Club (2024-02-04) [Dota 2]
+  Match 7893247522: Business Club vs Team Orca → Winner: Business Club (2024-02-05) [Dota 2]
+  Match 7893247523: Team Orca vs Invictus Gaming → Winner: Team Orca (2024-02-06) [Dota 2]
+  Match 7893247524: Invictus Gaming vs Team Spirit → Winner: Team Spirit (2024-02-07) [Dota 2]
+  Match 7893247525: Team Spirit vs PSG.Quest → Winner: Team Spirit (2024-02-08) [Dota 2]
+  Match 7893247526: PSG.Quest vs Natus Vincere → Winner: PSG.Quest (2024-02-09) [Dota 2]
+  Match 7893247527: Natus Vincere vs NAVI Junior → Winner: NAVI Junior (2024-02-10) [Dota 2]
+  Match 7893247528: NAVI Junior vs BigGooooood → Winner: NAVI Junior (2024-02-11) [Dota 2]
+  Match 7893247529: BigGooooood vs FLIPSTER TALON → Winner: BigGooooood (2024-02-12) [Dota 2]
+  Match 7893247530: FLIPSTER TALON vs GamerLegion → Winner: GamerLegion (2024-02-13) [Dota 2]
+  Match 7893247531: GamerLegion vs Darkside → Winner: GamerLegion (2024-02-14) [Dota 2]
+  Match 7893247532: Darkside vs FlyToMoon → Winner: Darkside (2024-02-15) [Dota 2]
+  Match 7893247533: FlyToMoon vs Xtreme Gaming → Winner: Xtreme Gaming (2024-02-16) [Dota 2]
+  Match 7893247534: Xtreme Gaming vs Team SMG → Winner: Xtreme Gaming (2024-02-17) [Dota 2]
+  Match 7893247535: Team SMG vs Luna Galaxy → Winner: Team SMG (2024-02-18) [Dota 2]
+  Match 7893247536: Luna Galaxy vs LV-Gaming → Winner: LV-Gaming (2024-02-19) [Dota 2]
+  Match 7893247537: LV-Gaming vs Titan → Winner: LV-Gaming (2024-02-20) [Dota 2]
+  Match 7893247538: Titan vs Night Pulse → Winner: Titan (2024-02-21) [Dota 2]
+  Match 7893247539: Night Pulse vs HEROIC → Winner: HEROIC (2024-02-22) [Dota 2]
+  Match 7893247540: HEROIC vs tam_sme → Winner: HEROIC (2024-02-23) [Dota 2]
+  Match 7893247541: tam_sme vs Evil Geniuses → Winner: tam_sme (2024-02-24) [Dota 2]
+  Match 7893247542: Evil Geniuses vs Newbee → Winner: Newbee (2024-02-25) [Dota 2]
+  Match 7893247543: Newbee vs Gaimin Gladiators → Winner: Newbee (2024-02-26) [Dota 2]
+  Match 7893247544: Gaimin Gladiators vs Vici Gaming → Winner: Gaimin Gladiators (2024-02-27) [Dota 2]
+  Match 7893247545: Vici Gaming vs Winstrike → Winner: Winstrike (2024-02-28) [Dota 2]
+  Match 7893247546: Winstrike vs w33ha earthspirit → Winner: Winstrike (2024-02-29) [Dota 2]
+  Match 7893247547: w33ha earthspirit vs Uzumaki → Winner: w33ha earthspirit (2024-03-01) [Dota 2]
+  Match 7893247548: Uzumaki vs Mineski → Winner: Mineski (2024-03-02) [Dota 2]
+  Match 7893247549: Mineski vs Team Zero → Winner: Mineski (2024-03-03) [Dota 2]
+

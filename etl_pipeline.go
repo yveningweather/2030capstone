@@ -5,6 +5,7 @@ import (
     "encoding/csv"
     "encoding/json"
     "fmt"
+    "net/http"
     "os"
     "strconv"
     "strings"
@@ -89,6 +90,7 @@ type ETLPipeline struct {
     Leagues             []RawLeague
     ValidationErrors    []string
     TransformationLog   []string
+    DBPath              string
     DB                  *sql.DB
 }
 
@@ -99,22 +101,23 @@ func NewETLPipeline() *ETLPipeline {
         Leagues:          []RawLeague{},
         ValidationErrors: []string{},
         TransformationLog: []string{},
-        DB:               nil,
+        DBPath:           "tournament_system.db",
     }
 }
 
 func (e *ETLPipeline) ExtractTeams() error {
     fmt.Println("Extracting teams from OpenDota API...")
 
-    simulatedTeams := []RawTeam{
-        {TeamID: 39, Name: "Team Spirit", Tag: "TS", Country: "RU"},
-        {TeamID: 43, Name: "PSG.LGD", Tag: "PSG", Country: "CN"},
-        {TeamID: 26, Name: "Secret", Tag: "Secret", Country: "EU"},
-        {TeamID: 8, Name: "Virtus.Pro", Tag: "VP", Country: "RU"},
-        {TeamID: 111, Name: "OG", Tag: "OG", Country: "EU"},
+    resp, err := http.Get("https://api.opendota.com/api/teams")
+    if err != nil {
+        return fmt.Errorf("failed to fetch teams: %w", err)
+    }
+    defer resp.Body.Close()
+
+    if err := json.NewDecoder(resp.Body).Decode(&e.Teams); err != nil {
+        return fmt.Errorf("failed to decode teams: %w", err)
     }
 
-    e.Teams = simulatedTeams
     fmt.Printf("  Success:  Extracted %d teams\n", len(e.Teams))
     return nil
 }
@@ -160,9 +163,14 @@ func (e *ETLPipeline) ExtractMatches(limit int) error {
 func (e *ETLPipeline) ExtractLeagues() error {
     fmt.Println("Extracting leagues from OpenDota API...")
 
-    e.Leagues = []RawLeague{
-        {LeagueID: 14983, Name: "The International 2024", Tier: "premium"},
-        {LeagueID: 14980, Name: "ESL Pro League", Tier: "premium"},
+    resp, err := http.Get("https://api.opendota.com/api/leagues")
+    if err != nil {
+        return fmt.Errorf("failed to fetch leagues: %w", err)
+    }
+    defer resp.Body.Close()
+
+    if err := json.NewDecoder(resp.Body).Decode(&e.Leagues); err != nil {
+        return fmt.Errorf("failed to decode leagues: %w", err)
     }
 
     fmt.Printf("  Success:  Extracted %d leagues\n", len(e.Leagues))
@@ -192,7 +200,7 @@ func (e *ETLPipeline) TransformTeams() []TransformedTeam {
             Name:            team.Name,
             Tag:             team.Tag,
             Region:          region,
-            EstablishedDate: "2000-01-01", // default for now
+            EstablishedDate: "2000-01-01", // default
         })
     }
 
@@ -366,215 +374,7 @@ func SaveMatchesToJSON(filename string, matches []TransformedMatch) error {
     return json.NewEncoder(file).Encode(matches)
 }
 
-// ============== DATABASE ==============
-
-func (e *ETLPipeline) CreateSchema() error {
-    schema := `
-    CREATE TABLE IF NOT EXISTS Games (
-        GameId INTEGER PRIMARY KEY,
-        Name TEXT NOT NULL UNIQUE,
-        Genre TEXT,
-        MaxTeamSize INTEGER
-    );
-
-    CREATE TABLE IF NOT EXISTS Teams (
-        TeamId INTEGER PRIMARY KEY,
-        Name TEXT NOT NULL,
-        Tag TEXT,
-        Region TEXT,
-        EstablishedDate TEXT
-    );
-
-    CREATE TABLE IF NOT EXISTS Players (
-        PlayerId INTEGER PRIMARY KEY,
-        Name TEXT NOT NULL,
-        Region TEXT,
-        JoinDate TEXT
-    );
-
-    CREATE TABLE IF NOT EXISTS TeamRosters (
-        RosterId INTEGER PRIMARY KEY,
-        TeamId INTEGER NOT NULL,
-        PlayerId INTEGER NOT NULL,
-        JoinDate TEXT,
-        Position TEXT,
-        FOREIGN KEY (TeamId) REFERENCES Teams(TeamId),
-        FOREIGN KEY (PlayerId) REFERENCES Players(PlayerId)
-    );
-
-    CREATE TABLE IF NOT EXISTS Tournaments (
-        TournamentId INTEGER PRIMARY KEY,
-        Name TEXT NOT NULL,
-        GameId INTEGER NOT NULL,
-        StartDate TEXT,
-        EndDate TEXT,
-        PrizePool REAL,
-        FOREIGN KEY (GameId) REFERENCES Games(GameId)
-    );
-
-    CREATE TABLE IF NOT EXISTS Matches (
-        MatchId INTEGER PRIMARY KEY,
-        TournamentId INTEGER NOT NULL,
-        Team1Id INTEGER NOT NULL,
-        Team2Id INTEGER NOT NULL,
-        WinnerTeamId INTEGER NOT NULL,
-        MatchDate TEXT,
-        Duration INTEGER,
-        MapOrGame TEXT,
-        FOREIGN KEY (TournamentId) REFERENCES Tournaments(TournamentId),
-        FOREIGN KEY (Team1Id) REFERENCES Teams(TeamId),
-        FOREIGN KEY (Team2Id) REFERENCES Teams(TeamId),
-        FOREIGN KEY (WinnerTeamId) REFERENCES Teams(TeamId)
-    );
-    `
-
-    for _, stmt := range strings.Split(schema, ";") {
-        stmt = strings.TrimSpace(stmt)
-        if stmt == "" {
-            continue
-        }
-        if _, err := e.DB.Exec(stmt); err != nil {
-            return fmt.Errorf("schema creation failed: %w", err)
-        }
-    }
-
-    fmt.Println("Schema created successfully")
-    return nil
-}
-
-func (e *ETLPipeline) LoadGames(games []TransformedGame) error {
-    for _, game := range games {
-        _, err := e.DB.Exec(
-            "INSERT OR IGNORE INTO Games (GameId, Name, Genre, MaxTeamSize) VALUES (?, ?, ?, ?)",
-            game.GameID, game.Name, game.Genre, game.MaxTeamSize,
-        )
-        if err != nil {
-            return err
-        }
-    }
-    fmt.Printf("Loaded %d games\n", len(games))
-    return nil
-}
-
-func (e *ETLPipeline) LoadTeams(teams []TransformedTeam) error {
-    for _, team := range teams {
-        _, err := e.DB.Exec(
-            "INSERT INTO Teams (TeamId, Name, Tag, Region, EstablishedDate) VALUES (?, ?, ?, ?, ?)",
-            team.TeamID, team.Name, team.Tag, team.Region, team.EstablishedDate,
-        )
-        if err != nil {
-            return err
-        }
-    }
-    fmt.Printf("Loaded %d teams\n", len(teams))
-    return nil
-}
-
-func (e *ETLPipeline) LoadTournaments(tournaments []TransformedMatch) error {
-    tournamentMap := make(map[int]bool)
-
-    for _, match := range tournaments {
-        if !tournamentMap[match.LeagueID] {
-            _, err := e.DB.Exec(
-                "INSERT OR IGNORE INTO Tournaments (TournamentId, Name, GameId, StartDate, EndDate, PrizePool) VALUES (?, ?, ?, ?, ?, ?)",
-                match.LeagueID, fmt.Sprintf("Tournament %d", match.LeagueID), 1, match.MatchDate, match.MatchDate, 0,
-            )
-            if err != nil {
-                return err
-            }
-            tournamentMap[match.LeagueID] = true
-        }
-    }
-    fmt.Printf("Loaded %d tournaments\n", len(tournamentMap))
-    return nil
-}
-
-func (e *ETLPipeline) LoadMatches(matches []TransformedMatch) error {
-    for _, match := range matches {
-        _, err := e.DB.Exec(
-            "INSERT INTO Matches (MatchId, TournamentId, Team1Id, Team2Id, WinnerTeamId, MatchDate, Duration, MapOrGame) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-            match.MatchID, match.LeagueID, match.Team1ID, match.Team2ID, match.WinnerTeamID, match.MatchDate, match.Duration, match.MapOrGame,
-        )
-        if err != nil {
-            return err
-        }
-    }
-    fmt.Printf("Loaded %d matches\n", len(matches))
-    return nil
-}
-
-func (e *ETLPipeline) QueryTeamWinRates() error {
-    fmt.Println("\n=== QUERY 1: Team Win Rates ===")
-
-    rows, err := e.DB.Query(`
-    SELECT t.Name, 
-           COUNT(CASE WHEN m.WinnerTeamId = t.TeamId THEN 1 END) AS Wins,
-           COUNT(*) AS Total,
-           ROUND(100.0 * COUNT(CASE WHEN m.WinnerTeamId = t.TeamId THEN 1 END) / COUNT(*), 2) AS WinRate
-    FROM Teams t
-    LEFT JOIN Matches m ON (m.Team1Id = t.TeamId OR m.Team2Id = t.TeamId)
-    GROUP BY t.TeamId
-    ORDER BY WinRate DESC
-    LIMIT 10;
-    `)
-    if err != nil {
-        return err
-    }
-    defer rows.Close()
-
-    fmt.Printf("%-30s %6s %7s %8s\n", "Team", "Wins", "Total", "WinRate%")
-    fmt.Println(strings.Repeat("-", 55))
-
-    count := 0
-    for rows.Next() {
-        var name string
-        var wins, total int
-        var winRate float64
-        if err := rows.Scan(&name, &wins, &total, &winRate); err != nil {
-            return err
-        }
-        if total > 0 {
-            fmt.Printf("%-30s %6d %7d %8.2f%%\n", name, wins, total, winRate)
-            count++
-        }
-    }
-    fmt.Printf("Total teams with matches: %d\n", count)
-    return rows.Err()
-}
-
-func (e *ETLPipeline) QueryTournamentStats() error {
-    fmt.Println("\n=== QUERY 2: Tournament Statistics ===")
-
-    rows, err := e.DB.Query(`
-    SELECT g.Name,
-           COUNT(DISTINCT t.TournamentId) AS Tournaments,
-           COUNT(DISTINCT m.MatchId) AS Matches,
-           COUNT(DISTINCT m.Team1Id) AS UniqueTeams
-    FROM Games g
-    LEFT JOIN Tournaments t ON g.GameId = t.GameId
-    LEFT JOIN Matches m ON t.TournamentId = m.TournamentId
-    GROUP BY g.GameId;
-    `)
-    if err != nil {
-        return err
-    }
-    defer rows.Close()
-
-    fmt.Printf("%-20s %12s %8s %12s\n", "Game", "Tournaments", "Matches", "Unique Teams")
-    fmt.Println(strings.Repeat("-", 55))
-
-    for rows.Next() {
-        var gameName string
-        var tournaments, matches, uniqueTeams int
-        if err := rows.Scan(&gameName, &tournaments, &matches, &uniqueTeams); err != nil {
-            return err
-        }
-        fmt.Printf("%-20s %12d %8d %12d\n", gameName, tournaments, matches, uniqueTeams)
-    }
-    return rows.Err()
-}
-
-// ============== ORCHESTRATION ==============
+// ============== helpers ==============
 
 func mapCountryToRegion(countryCode string) string {
     regions := map[string]string{
@@ -610,20 +410,218 @@ func mapCountryToRegion(countryCode string) string {
     return ""
 }
 
+// ============== database ==============
+
+func (e *ETLPipeline) CreateSchema() error {
+    fmt.Println("Creating database schema...")
+    db, err := sql.Open("sqlite", "file:"+e.DBPath)
+    if err != nil {
+        return fmt.Errorf("failed to open database: %w", err)
+    }
+
+    e.DB = db
+
+    schema := `
+    PRAGMA foreign_keys = ON;
+
+    CREATE TABLE IF NOT EXISTS Games (
+        GameId INTEGER PRIMARY KEY,
+        Name TEXT NOT NULL UNIQUE,
+        Genre TEXT,
+        MaxTeamSize INTEGER
+    );
+
+    CREATE TABLE IF NOT EXISTS Players (
+        PlayerId INTEGER PRIMARY KEY,
+        Name TEXT NOT NULL,
+        Region TEXT,
+        JoinDate TEXT
+    );
+
+    CREATE TABLE IF NOT EXISTS Teams (
+        TeamId INTEGER PRIMARY KEY,
+        Name TEXT NOT NULL,
+        Region TEXT,
+        EstablishedDate TEXT
+    );
+
+    CREATE TABLE IF NOT EXISTS TeamRosters (
+        RosterId INTEGER PRIMARY KEY,
+        TeamId INTEGER NOT NULL,
+        PlayerId INTEGER NOT NULL,
+        JoinDate TEXT,
+        Position TEXT,
+        FOREIGN KEY (TeamId) REFERENCES Teams(TeamId),
+        FOREIGN KEY (PlayerId) REFERENCES Players(PlayerId)
+    );
+
+    CREATE TABLE IF NOT EXISTS Tournaments (
+        TournamentId INTEGER PRIMARY KEY,
+        Name TEXT NOT NULL,
+        GameId INTEGER NOT NULL,
+        StartDate TEXT,
+        EndDate TEXT,
+        PrizePool REAL,
+        FOREIGN KEY (GameId) REFERENCES Games(GameId)
+    );
+
+    CREATE TABLE IF NOT EXISTS Matches (
+        MatchId INTEGER PRIMARY KEY,
+        TournamentId INTEGER NOT NULL,
+        Team1Id INTEGER NOT NULL,
+        Team2Id INTEGER NOT NULL,
+        WinnerTeamId INTEGER NOT NULL,
+        MatchDate TEXT,
+        MapOrGame TEXT,
+        FOREIGN KEY (TournamentId) REFERENCES Tournaments(TournamentId),
+        FOREIGN KEY (Team1Id) REFERENCES Teams(TeamId),
+        FOREIGN KEY (Team2Id) REFERENCES Teams(TeamId),
+        FOREIGN KEY (WinnerTeamId) REFERENCES Teams(TeamId)
+    );
+    `
+
+    _, err = db.Exec(schema)
+    if err != nil {
+        return fmt.Errorf("failed to create schema: %w", err)
+    }
+
+    fmt.Println("  Success:  Schema created")
+    return nil
+}
+
+func (e *ETLPipeline) LoadGames(games []TransformedGame) error {
+    fmt.Println("Loading games...")
+    stmt, err := e.DB.Prepare("INSERT OR IGNORE INTO Games (GameId, Name, Genre, MaxTeamSize) VALUES (?, ?, ?, ?)")
+    if err != nil {
+        return err
+    }
+    defer stmt.Close()
+
+    for _, game := range games {
+        _, err := stmt.Exec(game.GameID, game.Name, game.Genre, game.MaxTeamSize)
+        if err != nil {
+            return err
+        }
+    }
+
+    fmt.Printf("  Success:  Loaded %d games\n", len(games))
+    return nil
+}
+
+func (e *ETLPipeline) LoadTeams(teams []TransformedTeam) error {
+    fmt.Println("Loading teams...")
+    stmt, err := e.DB.Prepare("INSERT OR IGNORE INTO Teams (TeamId, Name, Region, EstablishedDate) VALUES (?, ?, ?, ?)")
+    if err != nil {
+        return err
+    }
+    defer stmt.Close()
+
+    for _, team := range teams {
+        _, err := stmt.Exec(team.TeamID, team.Name, team.Region, team.EstablishedDate)
+        if err != nil {
+            return err
+        }
+    }
+
+    fmt.Printf("  Success:  Loaded %d teams\n", len(teams))
+    return nil
+}
+
+func (e *ETLPipeline) LoadMatches(matches []TransformedMatch) error {
+    fmt.Println("Loading matches...")
+    stmt, err := e.DB.Prepare("INSERT OR IGNORE INTO Matches (MatchId, TournamentId, Team1Id, Team2Id, WinnerTeamId, MatchDate, MapOrGame) VALUES (?, ?, ?, ?, ?, ?, ?)")
+    if err != nil {
+        return err
+    }
+    defer stmt.Close()
+
+    for _, match := range matches {
+        _, err := stmt.Exec(match.MatchID, match.LeagueID, match.Team1ID, match.Team2ID, match.WinnerTeamID, match.MatchDate, match.MapOrGame)
+        if err != nil {
+            return err
+        }
+    }
+
+    fmt.Printf("  Success:  Loaded %d matches\n", len(matches))
+    return nil
+}
+
+func (e *ETLPipeline) ExportSampleQueries() error {
+    fmt.Println("Exporting sample query results...")
+    file, err := os.Create("sample_output.txt")
+    if err != nil {
+        return err
+    }
+    defer file.Close()
+
+    file.WriteString(strings.Repeat("=", 70) + "\n")
+    file.WriteString("TOURNAMENT SYSTEM - SAMPLE QUERY RESULTS\n")
+    file.WriteString(strings.Repeat("=", 70) + "\n\n")
+
+    // Query 1: All Games
+    file.WriteString("QUERY 1: All Games in System\n")
+    file.WriteString(strings.Repeat("-", 70) + "\n")
+    rows, err := e.DB.Query("SELECT GameId, Name, Genre, MaxTeamSize FROM Games")
+    if err == nil {
+        defer rows.Close()
+        for rows.Next() {
+            var gameID int
+            var name, genre string
+            var maxTeamSize int
+            rows.Scan(&gameID, &name, &genre, &maxTeamSize)
+            file.WriteString(fmt.Sprintf("  GameId: %d, Name: %s, Genre: %s, Team Size: %d\n", gameID, name, genre, maxTeamSize))
+        }
+    }
+    file.WriteString("\n")
+
+    // Query 2: Teams by Region
+    file.WriteString("QUERY 2: Teams by Region (Aggregation)\n")
+    file.WriteString(strings.Repeat("-", 70) + "\n")
+    rows, err = e.DB.Query("SELECT Region, COUNT(*) as TeamCount FROM Teams GROUP BY Region")
+    if err == nil {
+        defer rows.Close()
+        for rows.Next() {
+            var region string
+            var count int
+            rows.Scan(&region, &count)
+            file.WriteString(fmt.Sprintf("  Region: %s, Count: %d teams\n", region, count))
+        }
+    }
+    file.WriteString("\n")
+
+    // Query 3: Match Results with Team Names
+    file.WriteString("QUERY 3: Match Results with Team Names (JOIN)\n")
+    file.WriteString(strings.Repeat("-", 70) + "\n")
+    rows, err = e.DB.Query(`
+        SELECT m.MatchId, t1.Name as Team1, t2.Name as Team2, tw.Name as Winner, m.MatchDate, m.MapOrGame
+        FROM Matches m
+        JOIN Teams t1 ON m.Team1Id = t1.TeamId
+        JOIN Teams t2 ON m.Team2Id = t2.TeamId
+        JOIN Teams tw ON m.WinnerTeamId = tw.TeamId
+        ORDER BY m.MatchDate
+    `)
+    if err == nil {
+        defer rows.Close()
+        for rows.Next() {
+            var matchID int64
+            var team1, team2, winner, matchDate, mapOrGame string
+            rows.Scan(&matchID, &team1, &team2, &winner, &matchDate, &mapOrGame)
+            file.WriteString(fmt.Sprintf("  Match %d: %s vs %s → Winner: %s (%s) [%s]\n", matchID, team1, team2, winner, matchDate, mapOrGame))
+        }
+    }
+    file.WriteString("\n")
+
+    fmt.Println("  Success:  Sample queries exported to sample_output.txt")
+    return nil
+}
+
 // ============== orchestration ==============
 
 func (e *ETLPipeline) Run() error {
     fmt.Println("=" + strings.Repeat("=", 68) + "=")
-    fmt.Println("TOURNAMENT SYSTEM ETL PIPELINE - BETA")
+    fmt.Println("TOURNAMENT SYSTEM ETL PIPELINE - PROOF OF CONCEPT (Go)")
     fmt.Println("Data Source: OpenDota API + Realistic Match Data Generation")
     fmt.Println("=" + strings.Repeat("=", 68) + "=")
-
-    var err error
-    e.DB, err = sql.Open("sqlite", "tournament_system.db")
-    if err != nil {
-        return fmt.Errorf("database connection failed: %w", err)
-    }
-    defer e.DB.Close()
 
     fmt.Println("\n[1/3] EXTRACT PHASE")
     fmt.Println("-" + strings.Repeat("-", 68) + "-")
@@ -647,7 +645,36 @@ func (e *ETLPipeline) Run() error {
     games := e.TransformLeagues()
     matches := e.TransformMatches(teams)
 
-    fmt.Println("\n[3/3] LOAD PHASE")
+    fmt.Println("\n[3/3] LOAD PHASE (CSV + JSON Export)")
+    fmt.Println("-" + strings.Repeat("-", 68) + "-")
+
+    os.MkdirAll("transformed_data", 0755)
+
+    fmt.Println("Exporting teams to CSV...")
+    if err := SaveTeamsToCSV("transformed_data/teams.csv", teams); err != nil {
+        return err
+    }
+    fmt.Println("  Success:  Saved to transformed_data/teams.csv")
+
+    fmt.Println("Exporting matches to CSV...")
+    if err := SaveMatchesToCSV("transformed_data/matches.csv", matches); err != nil {
+        return err
+    }
+    fmt.Println("  Success:  Saved to transformed_data/matches.csv")
+
+    fmt.Println("Exporting teams to JSON...")
+    if err := SaveTeamsToJSON("transformed_data/teams.json", teams); err != nil {
+        return err
+    }
+    fmt.Println("  Success:  Saved to transformed_data/teams.json")
+
+    fmt.Println("Exporting matches to JSON...")
+    if err := SaveMatchesToJSON("transformed_data/matches.json", matches); err != nil {
+        return err
+    }
+    fmt.Println("  Success:  Saved to transformed_data/matches.json")
+
+    fmt.Println("\n[4/4] DATABASE LOAD PHASE")
     fmt.Println("-" + strings.Repeat("-", 68) + "-")
 
     if err := e.CreateSchema(); err != nil {
@@ -655,28 +682,34 @@ func (e *ETLPipeline) Run() error {
     }
 
     if err := e.LoadGames(games); err != nil {
-        return err
+        return fmt.Errorf("failed to load games: %w", err)
     }
 
     if err := e.LoadTeams(teams); err != nil {
-        return err
-    }
-
-    if err := e.LoadTournaments(matches); err != nil {
-        return err
+        return fmt.Errorf("failed to load teams: %w", err)
     }
 
     if err := e.LoadMatches(matches); err != nil {
-        return err
+        return fmt.Errorf("failed to load matches: %w", err)
     }
 
+    fmt.Println("\n[5/5] QUERY & EXPORT PHASE")
+    fmt.Println("-" + strings.Repeat("-", 68) + "-")
+
+    if err := e.ExportSampleQueries(); err != nil {
+        return fmt.Errorf("failed to export queries: %w", err)
+    }
+
+    defer e.DB.Close()
+
+    // summary
     fmt.Println("\n" + "=" + strings.Repeat("=", 68) + "=")
     fmt.Println("PIPELINE EXECUTION SUMMARY")
     fmt.Println("=" + strings.Repeat("=", 68) + "=")
 
     fmt.Println("\nTransformation Log:")
     for _, log := range e.TransformationLog {
-        fmt.Printf("  * %s\n", log)
+        fmt.Printf("  • %s\n", log)
     }
 
     fmt.Printf("\nValidation Errors: %d\n", len(e.ValidationErrors))
@@ -686,33 +719,31 @@ func (e *ETLPipeline) Run() error {
                 fmt.Printf("  ... and %d more\n", len(e.ValidationErrors)-5)
                 break
             }
-            fmt.Printf("  * %s\n", err)
+            fmt.Printf("  • %s\n", err)
         }
     } else {
-        fmt.Println("  No validation errors")
+        fmt.Println("  Success:  No validation errors")
     }
 
     fmt.Println("\nData Summary:")
-    fmt.Printf("  * Total Teams Extracted: %d\n", len(e.Teams))
-    fmt.Printf("  * Teams Transformed: %d\n", len(teams))
-    fmt.Printf("  * Total Matches Extracted: %d\n", len(e.Matches))
-    fmt.Printf("  * Matches Transformed: %d\n", len(matches))
-    fmt.Printf("  * Games Derived: %d\n", len(games))
+    fmt.Printf("  • Total Teams Extracted: %d\n", len(e.Teams))
+    fmt.Printf("  • Teams Transformed: %d\n", len(teams))
+    fmt.Printf("  • Total Matches Extracted: %d\n", len(e.Matches))
+    fmt.Printf("  • Matches Transformed: %d\n", len(matches))
+    fmt.Printf("  • Games Derived: %d\n", len(games))
 
-    fmt.Println("\n" + "=" + strings.Repeat("=", 68) + "=")
-    fmt.Println("ANALYTICAL QUERIES")
-    fmt.Println("=" + strings.Repeat("=", 68) + "=")
-
-    if err := e.QueryTeamWinRates(); err != nil {
-        return err
+    fmt.Println("\nSample Data:")
+    if len(teams) > 0 {
+        fmt.Printf("  Sample Team: %s (%s) - Region: %s\n",
+            teams[0].Name, teams[0].Tag, teams[0].Region)
     }
-
-    if err := e.QueryTournamentStats(); err != nil {
-        return err
+    if len(matches) > 0 {
+        fmt.Printf("  Sample Match: Team %d vs Team %d → Winner: %d (%s)\n",
+            matches[0].Team1ID, matches[0].Team2ID, matches[0].WinnerTeamID, matches[0].MatchDate)
     }
 
     fmt.Println("\n" + "=" + strings.Repeat("=", 68) + "=")
-    fmt.Println("PIPELINE COMPLETE - Database: tournament_system.db")
+    fmt.Println("Success:  PIPELINE COMPLETE - Data exported to transformed_data/ and tournament_system.db")
     fmt.Println("=" + strings.Repeat("=", 68) + "=")
 
     return nil
